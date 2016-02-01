@@ -383,7 +383,7 @@ int main() {
     assert(0);
   }
 
-  std::cout << std::endl << "5. TESTING TWO ELEMENT TREE. CONSTRUCTED BY + 0 + 1" << std::endl << std::endl;
+  std::cout << std::endl << "5. TESTING TWO ELEMENTS TREE. CONSTRUCTED BY + 0 + 1" << std::endl << std::endl;
 
   BST<int> bst5(BST<int>() + 0 + 1);
   
@@ -399,8 +399,8 @@ int main() {
   std::cout << "5. spine(bst5).height() == 2";
   assert(spine(bst5).height() == 2);
   std::cout << " OK.\n";
-  std::cout << "5. spine(bst5).value() == 0";
-  assert(spine(bst5).value() == 0);
+  std::cout << "5. spine(bst5).value() == 1";
+  assert(spine(bst5).value() == 1);
   std::cout << " OK.\n";
   std::cout << "5. bst5.empty() == false";
   assert(!bst5.empty());
@@ -485,7 +485,7 @@ int main() {
     assert(0);
   }
 
-  std::cout << std::endl << "6. TESTING TWO ELEMENT TREE. CONSTRUCTED BY {0, 1}" << std::endl << std::endl;
+  std::cout << std::endl << "6. TESTING TWO ELEMENTS TREE. CONSTRUCTED BY {0, 1}" << std::endl << std::endl;
 
   BST<int> bst6({0, 1});
   
@@ -501,8 +501,8 @@ int main() {
   std::cout << "6. spine(bst6).height() == 2";
   assert(spine(bst6).height() == 2);
   std::cout << " OK.\n";
-  std::cout << "6. spine(bst6).value() == 0";
-  assert(spine(bst6).value() == 0);
+  std::cout << "6. spine(bst6).value() == 1";
+  assert(spine(bst6).value() == 1);
   std::cout << " OK.\n";
   std::cout << "6. bst6.empty() == false";
   assert(!bst6.empty());
@@ -587,7 +587,7 @@ int main() {
     assert(0);
   }
 
-  std::cout << std::endl << "7. TESTING TWO ELEMENT TREE. CONSTRUCTED BY ITER" << std::endl << std::endl;
+  std::cout << std::endl << "7. TESTING TWO ELEMENTS TREE. CONSTRUCTED BY ITER" << std::endl << std::endl;
 
   std::vector<int> vec2 = {0, 1};
   BST<int> bst7(vec2.begin(), vec2.end());
@@ -604,8 +604,8 @@ int main() {
   std::cout << "7. spine(bst7).height() == 2";
   assert(spine(bst7).height() == 2);
   std::cout << " OK.\n";
-  std::cout << "7. spine(bst7).value() == 0";
-  assert(spine(bst7).value() == 0);
+  std::cout << "7. spine(bst7).value() == 1";
+  assert(spine(bst7).value() == 1);
   std::cout << " OK.\n";
   std::cout << "7. bst7.empty() == false";
   assert(!bst7.empty());
@@ -690,7 +690,7 @@ int main() {
     assert(0);
   }
 
-  std::cout << std::endl << "8. TESTING THREE ELEMENT TREE. CONSTRUCTED BY + 0 + 1 + -1" << std::endl << std::endl;
+  std::cout << std::endl << "8. TESTING THREE ELEMENTS TREE. CONSTRUCTED BY + 0 + 1 + -1" << std::endl << std::endl;
 
   BST<int> bst8(BST<int>() + 0 + 1 + -1);
   
@@ -706,8 +706,8 @@ int main() {
   std::cout << "8. spine(bst8).height() == 3";
   assert(spine(bst8).height() == 3);
   std::cout << " OK.\n";
-  std::cout << "8. spine(bst8).value() == -1";
-  assert(spine(bst8).value() == -1);
+  std::cout << "8. spine(bst8).value() == 1";
+  assert(spine(bst8).value() == 1);
   std::cout << " OK.\n";
   std::cout << "8. bst8.empty() == false";
   assert(!bst8.empty());
@@ -829,7 +829,7 @@ int main() {
 
   int sign = 1;
   for (int i = 0; i < 1000; ++i) {
-    sign *= 1;
+    sign *= -1;
     vec4.push_back(i * sign);
   }
   
@@ -848,7 +848,7 @@ int main() {
   vec4 = std::vector<int>();
 
   for (int i = 0; i < 10000; ++i) {
-    sign *= 1;
+    sign *= -1;
     vec4.push_back(i * sign);
   }
 
@@ -871,18 +871,18 @@ int main() {
     std::vector<int> temp;
 
     std::cout << "Testing vector creation.";
-    for (int i = 0; i < size * 250; ++i) {
+    for (int i = 0; i < size * 10000; ++i) {
       temp.push_back(rand());
     }
     std::cout << " Done. ";
 
     time(&start);
 
-    BST<int>(vec4.begin(), vec4.end());
+    BST<int> bst_complex(temp.begin(), temp.end());
 
     time(&end);
 
-    std::cout << "Building of tree with " << size * 250 << " nodes took " << end - start << " seconds.\n";
+    std::cout << "Building of tree with " << size * 10000 << " nodes and " << bst_complex.height() << " height took " << end - start << " seconds.\n";
   }
 
 #endif
